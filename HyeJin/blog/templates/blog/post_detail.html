@@ -1,0 +1,67 @@
+
+{% extends 'base.html' %}
+
+{% block title %}post_detail.html{% endblock %}
+
+{% block content %}
+<div style="padding:10px;">&nbsp</div>
+<div id="main-content" class="container">
+
+<h2>{{ post.title }}</h2>
+
+<p class="other_posts">
+    {% if post.get_previous %}
+    <a href="{{ post.get_previous.get_absolute_url }}" title="View previouspost">
+        &laquo;--{{post.get_previous}}</a>
+    {% endif %}
+
+    {% if post.get_next %}
+    | <a href="{{ post.get_next.get_absolute_url }}"
+        title="View next post">{{ post.get_next }}--&raquo;</a>
+    {% endif %}
+</p>
+
+<p class="date">{{ post.modify_date|date:"j F Y"}}</p>
+<br />
+
+<div class="body">
+    {{ post.content|linebreaks }}
+</div>
+<br>
+<div>
+    <b>TAGS</b><i class="fas fa-tag"></i>
+    {% load taggit_templatetags2_tags %}
+    {% get_tags_for_object object as "tags" %}
+    {% for tag in tags %}
+    <a href="{% url 'blog:tagged_object_list' tag.name %}"> #{{tag.name}}</a>
+    {% endfor %}
+    &emsp;
+    <a href="{% url 'blog:tag_cloud' %}"><span class="btn btn-info btn-sm">TagCloud</span></a>
+</div>  
+<div id="disqus_thread"></div>
+</div>
+{% endblock %}
+
+{% block extra-script %}
+
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    
+    var disqus_config = function () {
+        this.page.identifier = '{{ disqus_id }}'; 
+        this.page.url = '{{ disqus_url }}'; 
+        this.page.title = '{{ disqus_title }}'
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://{{ disqus_short }}.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endblock %}
+<h1></h1>

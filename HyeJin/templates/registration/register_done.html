@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+register_done.html
+{% endblock %}
+
+{% block content %}
+<div style="padding:10px;">&nbsp</div>
+<div id="main-content" class="container">
+    <h1>Registration Completed Successfully</h1>
+    <br>
+
+    <p>Thank you for registering.</p>
+
+    <p class='font-italic'><a href="{% url 'login' %}">Log in</a></p>
+</div>
+{% endblock %}

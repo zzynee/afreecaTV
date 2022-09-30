@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+My Blog Main Page
+{% endblock %}
+
+{% block extra-style %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+    {% comment %} .home-image {
+        background-image: url("{% static 'img/로고.jpg' %}");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 500px;
+        border-top: 10px solid #ccc;
+        border-bottom: 10px solid #ccc;
+        padding: 20px 0 0 20px;
+    } {% endcomment %}
+
+    #font {
+        position: relative;
+        top: -70px;
+    }
+    .myname {
+        position: relative;
+        top: -60px;
+    }
+    .powered {
+        position: relative;
+        top: 90%;
+        color: #cc0;
+        margin-right: 3%;
+        text-align: right;
+        font-style: italic;
+    }
+    
+    .pic{
+        opacity:0.8;
+    }
+    .bg-image-full {
+        line-height: 100px;
+        background-image: url('{% static 'img/캐릭터.jpg' %}');
+        background-repeat: no-repeat;   
+        background-size: cover;
+    }
+    h1 {
+        vertical-align: top;
+        text-align: center;
+    }
+
+    .service-icon {
+        position: relative;
+        margin: -50px 0 25px 0;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        background: #FFFFFF;
+        border-radius: 100px;
+        box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+        transition: .5s;
+    }
+    .service-item:hover .service-icon {
+        color: #FFFFFF;
+        background: var(--primary);
+    }
+
+    .service-item {
+        box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+    }
+
+    .img-fluid {
+        height: 435.66px;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+    <div class='pic'>
+        <header class="py-5 bg-image-full">
+            <div class="container py-5">
+                <div class="text-center my-5" id='font'>
+                    <h1 class="text-white fs-3 fw-bolder animate__animated animate__slideInDown" style="text-shadow:0px 1px 1px #000;">Anybody can Freely Broadcast TV</h1>
+                    <p class="text-blue-50 mb-0 myname" >&nbsp</p>
+                </div>
+            </div>
+
+        </header>
+    </div>
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow animate__animated animate__fadeInUp" data-wow-delay="0.1s" style="max-width: 600px; visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                <h6 class="text-primary">AfreecaTV</h6>
+                <h2 class="mb-4">세상의 모든 꿈을 생방송하다</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 wow animate__animated animate__fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                    <div class="service-item rounded overflow-hidden">
+                        <a href="https://www.afreecatv.com/">
+                            <div style="width:350px; height:400px; overflow:hidden">
+                            <img class="img-fluid" src="{% static 'img/캐릭터1.jpg' %}" alt="">
+                            </div>
+                        </a>
+                        <div class="position-relative p-4 pt-0">
+                            <div class="service-icon">
+                                <i class="fa-solid fa-star fa-3x"></i>
+                            </div>
+                            <h4 class="mb-3">아프리카TV 방송국</h4>
+                            <p>언제 어디서나, 누구나 쉽게 실시간 방송을 할 수 있는 유무선 통합 SNS미디어</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 wow animate__animated animate__fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                    <div class="service-item rounded overflow-hidden">
+                        <a href="https://library.kaist.ac.kr/search/detail/view.do?bibCtrlNo=719423&flag=dissertation">
+                            <div style="width:350px; height:400px; overflow:hidden">
+                            <img class="img-fluid" src="{% static 'img/대표님.jpg' %}" alt="">
+                            </div>
+                        </a>
+                        <div class="position-relative p-4 pt-0">
+                            <div class="service-icon">
+                                <i class="fa-regular fa-file fa-3x"></i>
+                            </div>
+                            <h4 class="mb-3">정찬용 대표님 논문</h4>
+                            <p>라이브 스트리밍 서비스의 상호작용성이 후원아이템 구매에 미치는 영향에 대한 논문</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 wow animate__animated animate__fadeInUp" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                    <div class="service-item rounded overflow-hidden">
+                        <a href="https://bj.afreecatv.com/afreecatvhr/vods">
+                            <div style="width:350px; height:400px; overflow:hidden">
+                                <img class="img-fluid" src="{% static 'img/채용.jpg' %}" alt="">
+                            </div>
+                        </a>
+                        <div class="position-relative p-4 pt-0">
+                            <div class="service-icon">
+                                <i class="fa-solid fa-cloud fa-3x"></i>
+                            </div>
+                            <h4 class="mb-3">아프리카TV 채용 VOD</h4>
+                            <p>신입 공개 채용 설명회, 직무 설명회, 현직자가 알려주는 아프리카TV의 모든것</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <div id="main-content" class="container">
+        <hr style="margin: 10px 0">
+
+        <div class="row text-center mt-5">
+            <div class="col-sm-6">
+                <h4>사람인</h4>
+                <p>이력서 / 자기소개서 / 포트폴리오</p>
+                <a class="small fw-medium" href="https://www.saramin.co.kr/zf_user/?NaPm=ct%3Dl8meln12%7Cci%3Dcheckout%7Ctr%3Dds%7Ctrx%3D%7Chk%3Dbc8045a92c21b9f8078f36fcc1d8638e836f891d">Read More<i class="fa fa-arrow-right ms-2"></i></a><br><br>
+            </div>
+            <div class="col-sm-6">
+                <h4>Blog</h4>
+                <p>취업사관학교 / 특강 후기 / 프로젝트</p>
+                <a class="small fw-medium" href="https://blog.naver.com/data_hyejin">Read More<i class="fa fa-arrow-right ms-2"></i></a><br><br><br>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block extra-script %}
+{% endblock %}

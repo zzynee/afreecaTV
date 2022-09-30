@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+<!-- 제목 블록 Start (기본값 My Blog Page) -->
+{% block title %}
+My Album List Page
+{% endblock %}
+<!-- 제목 블록 End -->
+
+<!-- 스타일 블록 Start -->
+{% block extra-style %}
+{% endblock %}
+<!-- 스타일 블록 End -->
+
+<!-- 콘텐츠 블록 Start -->
+{% block content %}
+<div style="padding:10px;">&nbsp</div>
+
+<div id="main-content" class="container">
+    <h3>Imformations</h3>
+    <div class="row">
+        <div class="mb-5">
+            {% for object in object_list %}
+                <div class="d-block mt-3 mb-5">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp<a href="{{ object.get_absolute_url }}" class="mb-3 btn btn-outline-dark"> {{ object }} </a>
+                    <p class="ml-5">{{ object.description }}</p>
+                    <div class="ml-5 row">
+                    {% for photo in object.photo_set.all|slice:":4" %}
+                        <div class="col-3">
+                        <a href="{{ photo.get_absolute_url }}" class="btn border">
+                            <img src="{{ photo.image.thumb_url }}" alt="{{ photo }}" width="100%">
+                        </a>
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+<!-- 콘텐츠 블록 End -->
+
+<!-- 스크립트 블록 Start -->
+{% block extra-script %}
+{% endblock %}
+<!-- 스크립트 블록 End -->

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}post_all.html{% endblock %}
+{% block extra-style %}
+    <style>
+        .right-box {
+            float: right;
+        }
+        .font{
+            color:black;
+        }
+        .search-btn{
+            color:black;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div style="padding:10px;">&nbsp</div>
+    <div id="main-content" class="container">
+    <h3>News</h3>
+    <div class='right-box pb-2'>
+        <form method="post"> {% csrf_token %}
+            <input type='text' name='search_word' id='id_search_word'>
+            <input class='search-btn' type="submit" value="검색" class="btn btn-primary btn-sm">&nbsp&nbsp&nbsp&nbsp
+        </form>
+    </div><br>
+    {% if posts %}
+    <div class='container'>
+        <table class='table table-hover'>
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>날짜</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for post in posts %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a class='font' href='{{ post.get_absolute_url }}'>{{ post }}</a></td>
+                <td>{{ post.owner }}</td>
+                <td>{{ post.modify_dt|date:"N d, Y" }}</td>
+            </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <span>
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number}}">PreviousPage</a>
+            {% endif%}
+
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number}}">NextPage</a>
+            {% endif%}
+        </span>
+    </div>
+    {% elif search_term %}
+        {{ search_term }}를 찾을 수 없습니다.
+    {% else %}
+        검색을 해보세요 !
+    {% endif %}
+    <br />
+</div>
+<div style="padding:10px;">&nbsp</div>
+{% endblock %}
+{% block extra-script %}
+{% endblock %}

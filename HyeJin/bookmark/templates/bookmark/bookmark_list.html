@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}bookmark_list.html{% endblock %}
+
+{% block extra-style %}
+    <style>
+        .btn{
+          color:gray;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div style="padding:10px;">&nbsp</div>
+<div id="main-content" class="container">
+  <h3>Employment Imformations </h3><br>
+  <div class="accordion" id="accordion">
+      {% for bm in object_list %}
+      <div class="card">
+        <div class="card-header" id="{{ bm.id }}">
+          <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{ bm.id }}" aria-expanded="true" aria-controls="collapse{{ bm.id }}">
+              {{ bm }}
+            </button>
+          </h2>
+        </div>
+    
+        <div id="collapse{{ bm.id }}" class="collapse" aria-labelledby="{{ bm.id }}" data-parent="#accordion">
+          <div class="card-body">
+              <a href="{{ bm.url }}">{{ bm.url }}</a><br><br>{{ bm.content|linebreaksbr }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+</div>
+<div style="padding:10px;">&nbsp</div>
+{% endblock %}

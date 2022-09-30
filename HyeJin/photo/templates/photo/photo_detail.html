@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+<!-- 제목 블록 Start (기본값 My Blog Page) -->
+{% block title %}
+{% endblock %}
+<!-- 제목 블록 End -->
+
+<!-- 스타일 블록 Start -->
+{% block extra-style %}
+
+{% endblock %}
+<!-- 스타일 블록 End -->
+
+<!-- 콘텐츠 블록 Start -->
+{% block content %}
+<div style="padding:10px;">&nbsp</div>
+<div id="main-content" class="container">
+    <span style="background: #F9F7F6; border-left: 0.5em solid #3A4CA8; padding: 0.5em;">Detail</span><br>
+    
+    <p class='text'><h3 class="display-5 fw-bolder">{{ object }}</h3> Date : {{ object.upload_dt|date:"Y-m-d"}}</p>
+    <div class="row gx-4 gx-lg-5 align-items-center">
+        <div class="col-md-6">
+            <img class="card-img-top mb-5 mb-md-0" src="{{ object.image.url }}" alt="{{ photo }}">
+        </div>
+        <div class="col-md-6">
+            <a href="{{ object.url }}"> 본문 URL </a><br>
+            <p class="lead"><h6>Content :</h6> {{ object.description|linebreaksbr }}</p>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
+<!-- 콘텐츠 블록 End -->
+
+<!-- 스크립트 블록 Start -->
+{% block extra-script %}
+{% endblock %}
+<!-- 스크립트 블록 End -->

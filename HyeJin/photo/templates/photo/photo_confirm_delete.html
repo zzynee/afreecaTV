@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+<!-- 제목 블록 Start (기본값 My Blog Page) -->
+{% block title %}
+My Blog Photo Delete Page
+{% endblock %}
+<!-- 제목 블록 End -->
+
+<!-- 스타일 블록 Start -->
+{% block extra-style %}
+{% endblock %}
+<!-- 스타일 블록 End -->
+
+<!-- 콘텐츠 블록 Start -->
+{% block content %}
+<div style="padding:10px;">&nbsp</div>
+<div id="main-content" class="container">
+    <h1>Photo Delete</h1>
+    <br>
+    
+    <form method="post"> {% csrf_token %}
+        <p>이미지 "{{ object }}"을/를 진심으로 삭제하는건가요?</p>
+        <input type="submit" value="Confirm" class="btn btn-danger btn-sm" />
+    </form>
+</div>
+{% endblock %}
+<!-- 콘텐츠 블록 End -->
+
+<!-- 스크립트 블록 Start -->
+{% block extra-script %}
+
+{% endblock %}
+<!-- 스크립트 블록 End -->

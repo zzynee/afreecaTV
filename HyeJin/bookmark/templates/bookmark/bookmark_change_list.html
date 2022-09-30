@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+<!-- 제목 블록 Start (기본값 My Blog Page) -->
+{% block title %}
+My Blog Bookmark Change List Page
+{% endblock %}
+<!-- 제목 블록 End -->
+
+<!-- 스타일 블록 Start -->
+{% block extra-style %}
+{% endblock %}
+<!-- 스타일 블록 End -->
+
+<!-- 콘텐츠 블록 Start -->
+{% block content %}
+<div style="padding:10px;">&nbsp</div>
+<div id="main-content" class="container">
+    <h1>Bookmark Change - {{ user }}</h1>
+    <br>
+
+    <table class="table table-bordered table-condensed table-striped">
+        <thead>
+            <tr class="table-primary">
+                <th>Title</th>
+                <th>Url</th>
+                <th>Owner</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for item in object_list %}
+            <tr>
+                <td>{{ item.title }}</td>
+                <td>{{ item.url }}</td>
+                <td>{{ item.owner }}</td>
+                <td><a href="{% url 'bookmark:update' item.id %}">Update</a></td>
+                <td><a href="{% url 'bookmark:delete' item.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+<!-- 콘텐츠 블록 End -->
+
+<!-- 스크립트 블록 Start -->
+{% block extra-script %}
+
+{% endblock %}
+<!-- 스크립트 블록 End -->

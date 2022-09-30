@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+<!-- 제목 블록 Start (기본값 My Blog Page) -->
+{% block title %}
+My Blog Album Delete Page
+{% endblock %}
+<!-- 제목 블록 End -->
+
+<!-- 스타일 블록 Start -->
+{% block extra-style %}
+{% endblock %}
+<!-- 스타일 블록 End -->
+
+<!-- 콘텐츠 블록 Start -->
+{% block content %}
+<div style="padding:10px;">&nbsp</div>
+<div id="main-content" class="container">
+    <h1>Album Delete <small class="font-italic">(including related photos)</small></h1>
+    <br>
+    
+    <form method="post">{% csrf_token %}
+        <p>앨범 "{{ object }}"을/를 삭제하면, 그 안의 모든 사진들도 삭제됩니다. 동의하십니까?</p>
+        <input type="submit" value="Confirm" class="btn btn-danger btn-sm" />
+    </form>
+</div>
+{% endblock %}
+<!-- 콘텐츠 블록 End -->
+
+<!-- 스크립트 블록 Start -->
+{% block extra-script %}
+
+{% endblock %}
+<!-- 스크립트 블록 End -->
